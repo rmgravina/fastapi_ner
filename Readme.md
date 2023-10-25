@@ -101,6 +101,17 @@ A resposta será um objeto JSON contendo as entidades nomeadas extraídas do arq
 }
 ```
 
+## Swagger
+
+O aplicativo possui uma documentação interativa gerada automaticamente pelo Swagger. Você pode acessar a documentação em `http://localhost:5000/docs`.
+
+![Figura 1](misc/image.png)
+
+![Figura 2](misc/image2.png)
+
+![Figura 3](misc/image3.png)
+
 ## Considerações finais
 
 Este é um aplicativo simples para extrair entidades nomeadas de arquivos PDF. Sinta-se à vontade para utilizar, modificar e melhorar o código conforme necessário.
+
