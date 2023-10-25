@@ -89,7 +89,7 @@ Substitua `<base64_encoded_pdf>` pelos dados do arquivo PDF codificados em forma
 
 ### Exemplo de resposta
 
-A resposta será um objeto JSON contendo as entidades nomeadas extraídas do arquivo PDF. Aqui está um exemplo de resposta:
+A resposta será um objeto JSON contendo as entidades nomeadas extraídas do arquivo PDF. Por padrão, o script identifica apenas entidades do tipo ``'PER'``, ou seja, pessoas. Aqui está um exemplo de resposta:
 
 ```json
 {
@@ -99,6 +99,80 @@ A resposta será um objeto JSON contendo as entidades nomeadas extraídas do arq
     "Mike Johnson"
   ]
 }
+```
+
+Porém, você pode alterar o script para identificar outros tipos de entidades, como ``'LOC'``, ``'MISC'`` e ``'ORG'`` ([Consulte a página do spaCy](https://spacy.io/models/pt)). Para isso, basta alterar os seguintes trechos do código:
+
+Trocar o `'PER'` pela entidade desejada:
+```python
+    # Identificar todas as entidades nomeadas referentes apenas à pessoas
+    for ent in document.ents:
+        if ent.label_ == 'PER':
+            ents_unique.add(ent.text)
+
+    ents_unique = list(ents_unique) # Converter o conjunto para lista
+```
+
+Remover a lista `prefixos`, caso não queira identificar entidades do tipo `'PER'` ou queira manter os prefixos:
+```python
+    # Remover os prefixos dos nomes, tipo Sr., Sra., Dr., etc.
+    prefixos = ["Sr.",
+                "Sra.",
+                "Dr.",
+                "Dra.",
+                "Prof.",
+                "Profª.",
+                "Profº.",
+                "Vossa Excelência",
+                "Conselheiro",
+                "Conselheira",
+                "Relator",
+                "Relatora",
+                "Desembargador",
+                "Desembargadora",
+                "Ministro",
+                "Ministra",
+                "Senador",
+                "Senadora",
+                "Deputado",
+                "Deputada",
+                "Vereador",
+                "Vereadora",
+                "Prefeito",
+                "Prefeita",
+                "Governador",
+                "Governadora",
+                "Presidente",
+                "Presidenta",
+                "Secretário",
+                "Secretária",
+                "Procurador",
+                "Procuradora",
+                "Promotor",
+                "Promotora",
+                "Juiz",
+                "Juíza",
+                "Desembargador",
+                "Desembargadora",
+                "Diretor",
+                "Diretora",
+                "Professor",
+                "Professora"]
+    for prefixo in prefixos:
+        ents_unique = {nome.replace(prefixo, "").strip() for nome in ents_unique}
+```
+
+Remover esse snippet de código, caso deseje identificar entidades que não sejam `'PER'`, ou caso deseje manter os tipos de dados conforme comentários:
+```python
+    # Remover nomes que não possuem sobrenome
+    ents_unique = [nome for nome in ents_unique if " " in nome]
+
+     # Remover nomes que não possuem apenas letras no nome
+#    ents_unique = {nome for nome in ents_unique if nome.split(" ")[0].isalpha()}
+
+    # Remover nomes que possuem o primeiro nome abreviado, tipo A. B. C. ou iciando  com -
+    ents_unique = [nome for nome in ents_unique if "." not in nome.split(" ")[0]]
+    ents_unique = [nome for nome in ents_unique if "-" not in nome.split(" ")[0]]
 ```
 
 ## Swagger
