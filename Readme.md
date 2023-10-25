@@ -170,7 +170,7 @@ Remover esse snippet de código, caso deseje identificar entidades que não seja
      # Remover nomes que não possuem apenas letras no nome
 #    ents_unique = {nome for nome in ents_unique if nome.split(" ")[0].isalpha()}
 
-    # Remover nomes que possuem o primeiro nome abreviado, tipo A. B. C. ou iciando  com -
+    # Remover nomes que possuem o primeiro nome abreviado, tipo A. B. C. ou iniciando com '-' ou '.'
     ents_unique = [nome for nome in ents_unique if "." not in nome.split(" ")[0]]
     ents_unique = [nome for nome in ents_unique if "-" not in nome.split(" ")[0]]
 ```
