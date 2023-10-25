@@ -34,6 +34,12 @@ DESCRIPTION='exemplo_de_descricao'
 
 Além disso, você deve substituir o modelo spaCy `lener` usado para NER por `pt_core_news_lg` ou qualquer outro modelo spaCy adequado., visto que o `lener` é um modelo próprio (customizado pela equipe).
 
+Trocar:
+```python
+NER = spacy.load('lener')
+```
+Caso você não tenha baixado previamente o modelo escolhido, ou não tenha colocado no mesmo diretório da aplicação, o spaCy irá baixar o modelo automaticamente.
+
 ### Executando o aplicativo
 
 As configurações do `uvicorn` estão determinadas dentro do script `app.py` para auto-execução, conforme mostrado abaixo:
