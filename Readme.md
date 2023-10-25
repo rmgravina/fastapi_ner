@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 ### Configuração
 
-Antes de executar o aplicativo, você precisa configurar algumas variáveis de ambiente. Crie um arquivo chamado `.env` e adicione as seguintes variáveis:
+Antes de executar o aplicativo, você precisa configurar algumas variáveis de ambiente. Renomeie o arquivo chamado `EXAMPLE.env` e adicione as seguintes descrições das variáveis:
 
 ```python
 TITLE='exemplo_de_titulo'
