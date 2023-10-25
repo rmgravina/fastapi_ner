@@ -1,6 +1,7 @@
 enot_vev/
 lener/
-documents/
+documents/input/
+documents/output/*.pdf
 temp_files_upload/
 __pycache__/
 testes.ipynb

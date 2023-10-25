@@ -7,6 +7,10 @@ import fitz
 from pydantic import BaseModel
 from typing import Optional, List
 import os
+from dotenv import load_dotenv
+
+# Carregar as variáveis de ambiente do arquivo .env
+load_dotenv()
 
 # Criar Class para receber o Base64
 class Base64(BaseModel):
@@ -17,7 +21,7 @@ class Base64(BaseModel):
 NER = spacy.load('lener')
 
 # Criar o App FastAPI
-app = FastAPI(title="E-Notifica API", description="Reconhecimento de Entidades Nomeadas - NER")
+app = FastAPI(title=os.getenv('TITLE'), description=os.getenv('DESCRIPTION'))
 
 
 # Rota raiz
