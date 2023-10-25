@@ -1,12 +1,12 @@
-# Aplicativo de Extração de Entidades Nomeadas (NER) em PDF
+# 🔎 Aplicativo de Extração de Entidades Nomeadas (NER) em PDF
 
 Este é um aplicativo Python para extração de Entidades Nomeadas (NER) de um arquivo PDF enviado em formato Base64. Ele usa o framework FastAPI e a biblioteca Spacy para realizar essa tarefa.
 
-## Como executar o aplicativo
+## 📍 Como executar o aplicativo
 
 Siga as instruções abaixo para executar o aplicativo em sua máquina local.
 
-### Pré-requisitos
+### 📄 Pré-requisitos
 
 Certifique-se de ter instalado o Python em sua máquina. Além disso, você precisará instalar as seguintes bibliotecas Python:
 
@@ -23,7 +23,7 @@ Você pode instalar as bibliotecas executando o seguinte comando:
 pip install -r requirements.txt
 ```
 
-### Configuração
+### ⚙ Configuração
 
 Antes de executar o aplicativo, você precisa configurar algumas variáveis de ambiente. Renomeie o arquivo chamado `EXAMPLE.env` e adicione as seguintes descrições das variáveis:
 
@@ -40,7 +40,7 @@ NER = spacy.load('lener')
 ```
 Caso você não tenha baixado previamente o modelo escolhido, ou não tenha colocado no mesmo diretório da aplicação, o spaCy irá baixar o modelo automaticamente.
 
-### Executando o aplicativo
+### ⚡ Executando o aplicativo
 
 As configurações do `uvicorn` estão determinadas dentro do script `app.py` para auto-execução, conforme mostrado abaixo:
 
@@ -77,11 +77,11 @@ Isso iniciará o aplicativo na máquina local, em `http://localhost:5000`.
 
 Você poderá acessar a documentação interativa do aplicativo em `http://localhost:5000/docs`.
 
-## Uso do aplicativo
+## 💬 Uso do aplicativo
 
 O aplicativo possui uma rota POST `/pdf_base64` que permite enviar um arquivo PDF em formato Base64 para extração de entidades nomeadas.
 
-### Exemplo de solicitação
+### 🌫 Exemplo de solicitação
 
 Para enviar um arquivo PDF, você precisará codificar o arquivo em formato Base64. Em seguida, faça uma solicitação POST para `http://localhost:5000/pdf_base64` com o seguinte payload:
 
@@ -93,7 +93,7 @@ Para enviar um arquivo PDF, você precisará codificar o arquivo em formato Base
 
 Substitua `<base64_encoded_pdf>` pelos dados do arquivo PDF codificados em formato Base64.
 
-### Exemplo de resposta
+### ✅ Exemplo de resposta
 
 A resposta será um objeto JSON contendo as entidades nomeadas extraídas do arquivo PDF. Por padrão, o script identifica apenas entidades do tipo ``'PER'``, ou seja, pessoas. Aqui está um exemplo de resposta:
 
@@ -181,7 +181,7 @@ Remover esse snippet de código, caso deseje identificar entidades que não seja
     ents_unique = [nome for nome in ents_unique if "-" not in nome.split(" ")[0]]
 ```
 
-## Swagger
+## 🗃 Swagger
 
 O aplicativo possui uma documentação interativa gerada automaticamente pelo Swagger. Você pode acessar a documentação em `http://localhost:5000/docs`.
 
@@ -191,7 +191,7 @@ O aplicativo possui uma documentação interativa gerada automaticamente pelo Sw
 
 ![Figura 3](misc/image3.png)
 
-## Considerações finais
+## 🤝 Considerações finais
 
 Este é um aplicativo simples para extrair entidades nomeadas de arquivos PDF. Sinta-se à vontade para utilizar, modificar e melhorar o código conforme necessário.
 
