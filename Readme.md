@@ -79,9 +79,9 @@ Você poderá acessar a documentação interativa do aplicativo em `http://local
 
 ## 💬 Uso do aplicativo
 
-O aplicativo possui uma rota POST `/pdf_base64` que permite enviar um arquivo PDF em formato Base64 para extração de entidades nomeadas.
+O aplicativo possui duas rotas POST, ``/pdf`` e  `/pdf_base64`. A ``/pdf`` recebe o arquivo PDF como upload, e a ``/pdf_base64`` recebe uma `string` PDF em formato Base64 para extração de entidades nomeadas.
 
-### 🌫 Exemplo de solicitação
+### 🌫 Exemplo de solicitação: `base64`
 
 Para enviar um arquivo PDF, você precisará codificar o arquivo em formato Base64. Em seguida, faça uma solicitação POST para `http://localhost:5000/pdf_base64` com o seguinte payload:
 
@@ -92,6 +92,19 @@ Para enviar um arquivo PDF, você precisará codificar o arquivo em formato Base
 ```
 
 Substitua `<base64_encoded_pdf>` pelos dados do arquivo PDF codificados em formato Base64.
+
+### 🌫 Exemplo de solicitação: `.pdf`
+
+
+```bash
+curl -X 'POST' \
+  'http://10.1.11.67:5000/pdf' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'pdf_file=@<pdf_filename>.pdf;type=application/pdf'
+
+```
+
 
 ### ✅ Exemplo de resposta
 
@@ -126,44 +139,7 @@ Remover a lista `prefixos`, caso não queira identificar entidades do tipo `'PER
                 "Sra.",
                 "Dr.",
                 "Dra.",
-                "Prof.",
-                "Profª.",
-                "Profº.",
-                "Vossa Excelência",
-                "Conselheiro",
-                "Conselheira",
-                "Relator",
-                "Relatora",
-                "Desembargador",
-                "Desembargadora",
-                "Ministro",
-                "Ministra",
-                "Senador",
-                "Senadora",
-                "Deputado",
-                "Deputada",
-                "Vereador",
-                "Vereadora",
-                "Prefeito",
-                "Prefeita",
-                "Governador",
-                "Governadora",
-                "Presidente",
-                "Presidenta",
-                "Secretário",
-                "Secretária",
-                "Procurador",
-                "Procuradora",
-                "Promotor",
-                "Promotora",
-                "Juiz",
-                "Juíza",
-                "Desembargador",
-                "Desembargadora",
-                "Diretor",
-                "Diretora",
-                "Professor",
-                "Professora"]
+                ...]
     for prefixo in prefixos:
         ents_unique = {nome.replace(prefixo, "").strip() for nome in ents_unique}
 ```
@@ -185,13 +161,12 @@ Remover esse snippet de código, caso deseje identificar entidades que não seja
 
 O aplicativo possui uma documentação interativa gerada automaticamente pelo Swagger. Você pode acessar a documentação em `http://localhost:5000/docs`.
 
-![Figura 1](misc/image.png)
+![Figura 1](/misc/image.png)
 
-![Figura 2](misc/image2.png)
+![Figura 2](/misc/image1.png)
 
-![Figura 3](misc/image3.png)
+![Figura 3](/misc/image2.png)
 
 ## 🤝 Considerações finais
 
 Este é um aplicativo simples para extrair entidades nomeadas de arquivos PDF. Sinta-se à vontade para utilizar, modificar e melhorar o código conforme necessário.
-
