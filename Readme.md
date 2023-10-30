@@ -59,13 +59,7 @@ python app.py
 ```
 
 
-Você pode também acessar o diretório do projeto e executar o seguinte comando:
-
-```
-uvicorn app:app --reload
-```
-
-Porém, é necessário remover do script ``app.py`` o trecho:
+Você pode também acessar o diretório do projeto e executar o seguinte comando `uvicorn app:app --reload`, porém, é necessário remover do script ``app.py`` o trecho:
 
 ```python
 if __name__ == "__main__":
