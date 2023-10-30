@@ -58,10 +58,9 @@ Dessa forma, para rodar o código, acesse o diretório do projeto e execute apen
 python app.py
 ```
 
-
-Você pode também acessar o diretório do projeto e executar o seguinte comando `uvicorn app:app --reload`, porém, é necessário remover do script ``app.py`` o trecho:
-
-```python
+> [!NOTE]
+> Você pode também acessar o diretório do projeto e executar o seguinte comando `uvicorn app:app --reload`, porém, é necessário remover do script ``app.py`` o trecho:
+ ```python
 if __name__ == "__main__":
 
     uvicorn.run("app:app", host="0.0.0.0", port=5000, reload=True)
@@ -70,6 +69,7 @@ if __name__ == "__main__":
 Isso iniciará o aplicativo na máquina local, em `http://localhost:5000`.
 
 Você poderá acessar a documentação interativa do aplicativo em `http://localhost:5000/docs`.
+
 
 ## 💬 Uso do aplicativo
 
