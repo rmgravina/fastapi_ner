@@ -1,6 +1,6 @@
 # 🔎 Aplicativo de Extração de Entidades Nomeadas (NER) em PDF
 
-Este é um aplicativo Python para extração de Entidades Nomeadas (NER) de um arquivo PDF enviado em formato Base64. Ele usa o framework FastAPI e a biblioteca Spacy para realizar essa tarefa.
+Este é um aplicativo Python para extração de Entidades Nomeadas (NER) de um arquivo PDF. Ele usa o framework FastAPI e a biblioteca Spacy para realizar essa tarefa.
 
 ## 📍 Como executar o aplicativo
 
